@@ -162,6 +162,8 @@ nav ul li a.active {
     justify-content: center;
     gap: 1rem;
     margin-top: 2rem;
+    position: relative;
+    z-index: 10;
 }
 
 .hero-button-one,
@@ -185,15 +187,96 @@ nav ul li a.active {
 .hero-button-two {
     background-color: transparent;
     color: white;
-}
-
-.hero-button-two:hover {
-    background-color: white;
-    color: var(--hover-color);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .hero-button-one:hover {
-    background-color: rgba(255, 68, 0, 0.8);
+    background-color: rgb(200, 40, 0);
+    cursor: pointer;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.hero-button-two:hover {
+    background-color: rgba(255, 255, 255, 0.45);
+    color: rgb(255, 68, 0);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* CARDS SECTION */
+.cards-section h1 {
+    color: black;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.cards-section p {
+    color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    font-size: 18px;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 30px;
+}
+
+.card {
+    background-color: white;
+    height: 320px;
+    width: 330px;
+    margin: 15px;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border:1px solid var(--hover-color) ;
+
+}
+
+.card h3 {
+    font-size: 20px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+}
+
+.card p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+    text-align: left;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.magnify {
+    font-size: 24px;
+    padding: 15px;
+    color: #ff4400;
+    background-color: rgba(255, 68, 0, 0.08);
+    border-radius: 14px;
+    margin: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 54px;
+    height: 54px;
 }
