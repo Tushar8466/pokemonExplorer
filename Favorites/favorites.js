@@ -80,10 +80,10 @@ function displayFavorites(pokemonList) {
             </div>
         `;
 
-        // Add click event for modal
+        // Add click event for modal (excluding fav btn)
         card.addEventListener('click', (e) => {
             if (!e.target.closest('.favorite-btn')) {
-                openModal(pokemon.id);
+                fetchAndOpenModal(pokemon.id);
             }
         });
 
@@ -109,8 +109,7 @@ function toggleFavorite(id, btn) {
     loadFavorites();
 }
 
-async function openModal(pokemonId) {
-    // Basic modal implementation reused
+async function fetchAndOpenModal(pokemonId) {
     modal.style.display = 'block';
     setTimeout(() => modal.classList.add('show'), 10);
     modalBody.innerHTML = '<div class="loading">Loading details...</div>';
@@ -118,18 +117,13 @@ async function openModal(pokemonId) {
     try {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
         const data = await res.json();
-
-        // We need to inject the render function logic here since we don't have modules
-        // For simplicity, reusing the same HTML structure as gallery
         renderModalContent(data);
     } catch (e) {
-        modalBody.innerHTML = '<div class="error">Error</div>';
+        modalBody.innerHTML = '<div class="error">Error loading details</div>';
     }
 }
 
 function renderModalContent(pokemon) {
-    // Ideally duplicate the render logic or import it. 
-    // Duplicating for robustness in this simple setup.
     const primaryType = pokemon.types[0].type.name;
     const stats = pokemon.stats.map(s => ({
         name: s.stat.name,

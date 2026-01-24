@@ -61,11 +61,18 @@
     position: absolute;
     top: 15px;
     left: 20px;
-    z-index: 10;
-    font-size: 24px;
-    color: #ddd;
+    z-index: 100;
+    font-size: 20px;
+    color: #ccc;
+    background: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: all 0.3s ease;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .favorite-btn:hover {

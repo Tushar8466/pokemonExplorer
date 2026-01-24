@@ -56,7 +56,7 @@ function displayPokemon(pokemonList) {
 
         card.innerHTML = `
             <div class="card-id">#${pokemon.id.toString().padStart(3, '0')}</div>
-            <div class="favorite-btn ${isFavorite ? 'active' : ''}" data-id="${pokemon.id}">
+             <div class="favorite-btn ${isFavorite ? 'active' : ''}" data-id="${pokemon.id}">
                 <i class="fa-${isFavorite ? 'solid' : 'regular'} fa-heart"></i>
             </div>
             <div class="card-image">
