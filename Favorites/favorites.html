@@ -4,14 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Your Favorites - Pokemon Explorer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Bitcount+Single:wght@100..900&family=Black+Ops+One&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+GB+J+Guides:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Pompiere&family=Roboto:ital,wght@0,100..900;1,100..900&family=Shojumaru&family=Space+Grotesk:wght@300..700&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="gallery.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" />
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../Gallery/gallery.css">
+    <link rel="stylesheet" href="favorites.css">
 </head>
 
 <body style="background-color: rgb(253, 251, 251)">
@@ -23,8 +26,8 @@
             </div>
             <ul>
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="gallery.html" class="active">Gallery</a></li>
-                <li><a href="../Favorites/favorites.html">Favorites</a></li>
+                <li><a href="../Gallery/gallery.html">Gallery</a></li>
+                <li><a href="#" class="active">Favorites</a></li>
                 <li><a href="#">Terms</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
@@ -32,28 +35,23 @@
     </header>
     <main>
         <section class="heading-content">
-            <h1>Pokemon Gallery</h1>
-            <p>Browse and discover Pokemon from all generations</p>
-        </section>
-        <section class="search-section">
-            <input type="text" placeholder="Search Pokemon">
-            <select name="generation" id="">
-                <option value="generation-1">Generation 1</option>
-                <option value="generation-2">Generation 2</option>
-                <option value="generation-3">Generation 3</option>
-                <option value="generation-4">Generation 4</option>
-                <option value="generation-5">Generation 5</option>
-                <option value="generation-6">Generation 6</option>
-                <option value="generation-7">Generation 7</option>
-                <option value="generation-8">Generation 8</option>
-            </select>
+            <h1>Your Favorites</h1>
+            <p>Your personal collection of favorite Pokemon</p>
         </section>
 
-        <div class="pokemon-grid" id="pokemon-grid">
-            <!-- Pokemon cards will be inserted here -->
+        <div class="pokemon-grid" id="favorites-grid">
+            <!-- Favorite cards will be inserted here -->
         </div>
 
-        <!-- Pokemon Detail Modal -->
+        <div id="no-favorites" class="no-results" style="display: none;">
+            <i class="fa-regular fa-heart" style="font-size: 48px; margin-bottom: 20px; color: #ddd;"></i>
+            <p>You haven't added any Pokemon to your favorites yet.</p>
+            <a href="../Gallery/gallery.html" class="cta-button"
+                style="display: inline-block; margin-top: 20px; padding: 10px 20px; background: #ff4400; color: white; border-radius: 20px; text-decoration: none;">Explore
+                Gallery</a>
+        </div>
+
+        <!-- Pokemon Detail Modal (Reused) -->
         <div id="pokemon-modal" class="modal">
             <div class="modal-content">
                 <span class="close-modal">&times;</span>
@@ -63,7 +61,7 @@
             </div>
         </div>
     </main>
-    <script src="gallery.js"></script>
+    <script src="favorites.js"></script>
 </body>
 
 </html>

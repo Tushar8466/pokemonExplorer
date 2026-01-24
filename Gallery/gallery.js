@@ -52,8 +52,13 @@ function displayPokemon(pokemonList) {
         card.classList.add('pokemon-card');
         card.classList.add(pokemon.types[0]);
 
+        const isFavorite = checkFavorite(pokemon.id);
+
         card.innerHTML = `
             <div class="card-id">#${pokemon.id.toString().padStart(3, '0')}</div>
+            <div class="favorite-btn ${isFavorite ? 'active' : ''}" data-id="${pokemon.id}">
+                <i class="fa-${isFavorite ? 'solid' : 'regular'} fa-heart"></i>
+            </div>
             <div class="card-image">
                 <img src="${pokemon.image}" alt="${pokemon.name}">
             </div>
@@ -65,8 +70,40 @@ function displayPokemon(pokemonList) {
             </div>
         `;
 
+        // Add click event for favorite toggling
+        const favBtn = card.querySelector('.favorite-btn');
+        favBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent modal from opening
+            toggleFavorite(pokemon.id, favBtn);
+        });
+
         pokemonGrid.appendChild(card);
     });
+}
+
+function checkFavorite(id) {
+    const favorites = JSON.parse(localStorage.getItem('pokemonFavorites') || '[]');
+    return favorites.includes(id);
+}
+
+function toggleFavorite(id, btn) {
+    let favorites = JSON.parse(localStorage.getItem('pokemonFavorites') || '[]');
+    const index = favorites.indexOf(id);
+    const icon = btn.querySelector('i');
+
+    if (index === -1) {
+        favorites.push(id);
+        btn.classList.add('active');
+        icon.classList.remove('fa-regular');
+        icon.classList.add('fa-solid');
+    } else {
+        favorites.splice(index, 1);
+        btn.classList.remove('active');
+        icon.classList.remove('fa-solid');
+        icon.classList.add('fa-regular');
+    }
+
+    localStorage.setItem('pokemonFavorites', JSON.stringify(favorites));
 }
 
 generationSelect.addEventListener('change', (e) => {
